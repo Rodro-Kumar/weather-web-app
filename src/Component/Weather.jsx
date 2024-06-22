@@ -17,7 +17,7 @@ const Weather = () => {
 
     if (inputValue == "") return;
     setloading(true);
-    fetch(`http://api.weatherapi.com/v1/forecast.json?key=${API}&q=${inputValue}&days=10&aqi=no&alerts=yes
+    fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API}&q=${inputValue}&days=10&aqi=no&alerts=yes
     
     `)
       .then((response) => response.json())
