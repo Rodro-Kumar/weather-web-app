@@ -1,6 +1,5 @@
-import { React, useEffect, useState } from "react";
+import { React, useState } from "react";
 import Home from "./Home";
-import Forecast from "./Forecast";
 
 const Weather = () => {
   const [searchValue, setsearchValue] = useState("");
@@ -8,7 +7,6 @@ const Weather = () => {
   const [WeatherData, setWeatherData] = useState({});
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState(false);
-  const [foreCast, setforeCast] = useState(false);
 
   const HandleInput = (event) => {
     setinputValue(event.target.value);
@@ -37,15 +35,12 @@ const Weather = () => {
   const handleForecastDetails = () => {
     if (!WeatherData.location) {
       seterror(true);
-    } else {
-      setforeCast(true);
     }
   };
 
   return (
     <>
       <Home
-        className={`${foreCast ? "hidden" : "block"}`}
         historyValue={searchValue}
         handleInput={HandleInput}
         inputvalue={inputValue}
@@ -54,13 +49,6 @@ const Weather = () => {
         HandleSerach={HandleSerach}
         handleForeCast={handleForecastDetails}
         Error={error}
-      />
-      <Forecast
-        className={`${foreCast ? "block" : "hidden"}`}
-        data={WeatherData}
-        loading={loading}
-        foreCast={() => setforeCast(false)}
-        inputvalue={inputValue}
       />
     </>
   );
