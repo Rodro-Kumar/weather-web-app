@@ -61,27 +61,24 @@ const Home = ({ handleInput, data, loading, HandleSerach, className }) => {
   return (
     <>
       <div
-        className={`${className} relative w-full h-[100vh] overflow-y-scroll  bg-gradient-to-tl from-[#47BFDF] to-[#4a91ff]`}
+        className={`${className} relative h-[100vh] w-full overflow-y-scroll bg-gradient-to-tl from-[#47BFDF] to-[#4a91ff]`}
       >
         <div className="container">
-          <div className=" pt-10 pb-10 px-4 lg:px-8 rounded-2xl">
+          <div className="rounded-2xl px-4 pb-10 pt-10 lg:px-8">
             {/* ======= Error page ======== */}
             {weatherData.error && (
-              <div className="backdrop-blur-sm w-full h-full fixed top-0 left-0 z-[999]">
-                <div className="bg-[#ffffff27] backdrop-blur-lg w-full h-full relative top-0 left-0 z-[999]">
-                  <div className="absolute top-[50%] left-[50%] flex flex-col items-center justify-center w-full -translate-x-[50%] -translate-y-[50%]">
+              <div className="fixed left-0 top-0 z-[999] h-full w-full backdrop-blur-sm">
+                <div className="relative left-0 top-0 z-[999] h-full w-full bg-[#ffffff27] backdrop-blur-lg">
+                  <div className="absolute left-[50%] top-[50%] flex w-full -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center">
                     <img src={error} alt="" className="w-[300px]" />
-                    <p
-                      className="text-black font-overpass text-lg font-medium
-                    capitalize"
-                    >
+                    <p className="font-overpass text-lg font-medium capitalize text-black">
                       No matching location found!
                     </p>
                     <div
-                      className="py-3 px-7 bg-white mt-4 rounded-md cursor-pointer hover:scale-105 active:scale-95 transition-transform"
+                      className="mt-4 cursor-pointer rounded-md bg-white px-7 py-3 transition-transform hover:scale-105 active:scale-95"
                       onClick={() => window.location.reload()}
                     >
-                      <p className="leading-none text-md font-overpass font-semibold cursor-pointer">
+                      <p className="text-md cursor-pointer font-overpass font-semibold leading-none">
                         Try again
                       </p>
                     </div>
@@ -92,10 +89,10 @@ const Home = ({ handleInput, data, loading, HandleSerach, className }) => {
 
             {/* ====== Loading page ======== */}
             {loading && (
-              <div className="backdrop-blur-sm w-full h-full fixed top-0 left-0 z-[999]">
-                <div className="bg-[#ffffff1c] backdrop-blur-sm w-full h-full relative top-0 left-0 z-[999]">
-                  <div className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
-                    <div class="w-14 h-14 border-[6px] border-dashed rounded-full animate-spin border-blue-600"></div>
+              <div className="fixed left-0 top-0 z-[999] h-full w-full backdrop-blur-sm">
+                <div className="relative left-0 top-0 z-[999] h-full w-full bg-[#ffffff1c] backdrop-blur-sm">
+                  <div className="absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%]">
+                    <div class="h-14 w-14 animate-spin rounded-full border-[6px] border-dashed border-blue-600"></div>
                   </div>
                 </div>
               </div>
@@ -104,14 +101,11 @@ const Home = ({ handleInput, data, loading, HandleSerach, className }) => {
             {/* ======== Header =========== */}
             <div className="flex items-center justify-between">
               <div
-                className="flex items-center gap-x-3 text-white cursor-pointer"
+                className="flex cursor-pointer items-center gap-x-3 text-white"
                 onClick={HandleSearch}
               >
                 <FaLocationArrow className="text-2xl md:text-3xl" />
-                <h3
-                  className="text-2xl md:text-3xl font-overpass capitalize
-                 font-bold text-shadow leading-none"
-                >
+                <h3 className="text-shadow font-overpass text-2xl font-bold capitalize leading-none md:text-3xl">
                   {weatherData.location ? weatherData.location.name : "London"}
                 </h3>
                 <MdKeyboardArrowDown
@@ -124,11 +118,11 @@ const Home = ({ handleInput, data, loading, HandleSerach, className }) => {
               </div>
 
               <div
-                className={`cursor-pointer relative after:absolute after:w-2 after:h-2 after:rounded-full after:top-0 after:right-0 after:z-50 ${
+                className={`relative cursor-pointer after:absolute after:right-0 after:top-0 after:z-50 after:h-2 after:w-2 after:rounded-full ${
                   weatherData.alerts > 0 && "after:bg-red-600"
                 }`}
               >
-                <IoMdNotificationsOutline className="text-white text-2xl md:text-4xl" />
+                <IoMdNotificationsOutline className="text-2xl text-white md:text-4xl" />
               </div>
             </div>
             <div
@@ -137,7 +131,7 @@ const Home = ({ handleInput, data, loading, HandleSerach, className }) => {
               }`}
             >
               <div
-                className={` w-full mt-2  ${
+                className={`mt-2 w-full ${
                   isopen
                     ? "scale-x-100 transition-transform"
                     : "scale-x-0 transition-transform"
@@ -145,12 +139,12 @@ const Home = ({ handleInput, data, loading, HandleSerach, className }) => {
               >
                 <input
                   type="text"
-                  className="w-full py-2 px-6 rounded-2xl font-overpass font-medium"
+                  className="w-full rounded-2xl px-6 py-2 font-overpass font-medium"
                   placeholder="Search here"
                   onChange={handleInput}
                 />
                 <div
-                  className="absolute top-[50%] bg-[#48aaee] text-white px-4 py-[5px] rounded-2xl hover:bg-[#519ed4] -translate-y-[50%] text-xl right-1 cursor-pointer"
+                  className="absolute right-1 top-[50%] -translate-y-[50%] cursor-pointer rounded-2xl bg-[#48aaee] px-4 py-[5px] text-xl text-white hover:bg-[#519ed4]"
                   onClick={HandleSerach}
                 >
                   <FaSearchLocation />
@@ -160,7 +154,7 @@ const Home = ({ handleInput, data, loading, HandleSerach, className }) => {
 
             <div>
               {/* =============== current =================== */}
-              <div className="flex items-center flex-col sm:flex-row gap-x-10">
+              <div className="flex flex-col items-center gap-x-10 sm:flex-row">
                 <div className="flex items-center">
                   {weatherData.current ? (
                     <img
@@ -168,34 +162,37 @@ const Home = ({ handleInput, data, loading, HandleSerach, className }) => {
                         weatherData.current.condition.text == "Partly cloudy"
                           ? partyCloudy
                           : weatherData.current.condition.text ==
-                            "Moderate or heavy rain with thunder"
-                          ? heavyRain
-                          : weatherData.current.condition.text == "Sunny"
-                          ? sunny
-                          : weatherData.current.condition.text ==
-                            "Patchy rain nearby"
-                          ? patchyRain
-                          : weatherData.current.condition.text == "Mist"
-                          ? mist
-                          : weatherData.current.condition.text == "Overcast"
-                          ? overCast
-                          : weatherData.current.condition.text == "Cloudy"
-                          ? cloudy
-                          : weatherData.current.condition.text == "Clear"
-                          ? sunny
-                          : weatherData.current.condition.text ==
-                            "Moderate rain"
-                          ? lightRain
-                          : weatherData.current.condition.text ==
-                            "Patchy light drizzle"
-                          ? lightRain
-                          : weatherData.current.condition.text ==
-                            "Light rain shower"
-                          ? lightRain
-                          : weatherData.current.condition.text ==
-                            "Patchy light rain"
-                          ? lightRain
-                          : cloudy
+                              "Moderate or heavy rain with thunder"
+                            ? heavyRain
+                            : weatherData.current.condition.text == "Sunny"
+                              ? sunny
+                              : weatherData.current.condition.text ==
+                                  "Patchy rain nearby"
+                                ? patchyRain
+                                : weatherData.current.condition.text == "Mist"
+                                  ? mist
+                                  : weatherData.current.condition.text ==
+                                      "Overcast"
+                                    ? overCast
+                                    : weatherData.current.condition.text ==
+                                        "Cloudy"
+                                      ? cloudy
+                                      : weatherData.current.condition.text ==
+                                          "Clear"
+                                        ? sunny
+                                        : weatherData.current.condition.text ==
+                                            "Moderate rain"
+                                          ? lightRain
+                                          : weatherData.current.condition
+                                                .text == "Patchy light drizzle"
+                                            ? lightRain
+                                            : weatherData.current.condition
+                                                  .text == "Light rain shower"
+                                              ? lightRain
+                                              : weatherData.current.condition
+                                                    .text == "Patchy light rain"
+                                                ? lightRain
+                                                : cloudy
                       }
                       alt={cloudy}
                       className="w-[100px] sm:w-[140px] lg:w-[180px]"
@@ -208,11 +205,11 @@ const Home = ({ handleInput, data, loading, HandleSerach, className }) => {
                     />
                   )}
                 </div>
-                <div className="py-5 px-8 bg-[#ffffff63] overflow-hidden w-full lg:w-auto backdrop-blur-lg rounded-[20px] border-[3px] flex  border-[#ffffff71] mt-8">
+                <div className="mt-8 flex w-full overflow-hidden rounded-[20px] border-[3px] border-[#ffffff71] bg-[#ffffff63] px-8 py-5 backdrop-blur-lg lg:w-auto">
                   <div className="flex flex-col sm:flex-row">
                     {" "}
                     <div>
-                      <h3 className="text-base lg:text-[18px] font-overpass font-normal text-shadow text-white">
+                      <h3 className="text-shadow font-overpass text-base font-normal text-white lg:text-[18px]">
                         Today,{" "}
                         <span className="pr-1">
                           {time.getDate() ? time.getDate() : "5"}
@@ -220,65 +217,62 @@ const Home = ({ handleInput, data, loading, HandleSerach, className }) => {
                         {weatherData && time.getMonth() + 1 == 1
                           ? "January"
                           : time.getMonth() + 1 == 2
-                          ? "February"
-                          : time.getMonth() + 1 == 3
-                          ? "March"
-                          : time.getMonth() + 1 == 4
-                          ? "April"
-                          : time.getMonth() + 1 == 5
-                          ? "May"
-                          : time.getMonth() + 1 == 6
-                          ? "June"
-                          : time.getMonth() + 1 == 7
-                          ? "July"
-                          : time.getMonth() + 1 == 8
-                          ? "August"
-                          : time.getMonth() + 1 == 9
-                          ? "September"
-                          : time.getMonth() + 1 == 10
-                          ? "October"
-                          : time.getMonth() + 1 == 11
-                          ? "November"
-                          : time.getMonth() + 1 == 12
-                          ? "December"
-                          : "January"}
+                            ? "February"
+                            : time.getMonth() + 1 == 3
+                              ? "March"
+                              : time.getMonth() + 1 == 4
+                                ? "April"
+                                : time.getMonth() + 1 == 5
+                                  ? "May"
+                                  : time.getMonth() + 1 == 6
+                                    ? "June"
+                                    : time.getMonth() + 1 == 7
+                                      ? "July"
+                                      : time.getMonth() + 1 == 8
+                                        ? "August"
+                                        : time.getMonth() + 1 == 9
+                                          ? "September"
+                                          : time.getMonth() + 1 == 10
+                                            ? "October"
+                                            : time.getMonth() + 1 == 11
+                                              ? "November"
+                                              : time.getMonth() + 1 == 12
+                                                ? "December"
+                                                : "January"}
                       </h3>
                       <h2
                         id="celcious"
-                        className="text-[60px] md:text-[70px] lg:text-[100px] font-overpass font-normal text-white mt-5"
+                        className="mt-5 font-overpass text-[60px] font-normal text-white md:text-[70px] lg:text-[100px]"
                       >
                         {Math.floor(
                           weatherData.current
                             ? weatherData.current.temp_c
-                            : "29"
+                            : "29",
                         )}
                         °
                       </h2>
                     </div>
                     <div className="pl-10">
-                      <h5
-                        className="text-lg lg:text-2xl text-center sm:text-start font-overpass font-bold text-white text-shadow w-[292px] whitespace-nowrap text-ellipsis overflow-hidden
-                "
-                      >
+                      <h5 className="text-shadow w-[292px] overflow-hidden text-ellipsis whitespace-nowrap text-center font-overpass text-lg font-bold text-white sm:text-start lg:text-2xl">
                         {weatherData.current
                           ? weatherData.current.condition.text
                           : "Cloudy"}
                       </h5>
-                      <div className="pt-4 flex flex-col gap-y-5">
+                      <div className="flex flex-col gap-y-5 pt-4">
                         <div className="flex items-center gap-x-4">
                           <div className="flex items-center gap-x-3">
                             <img src={wind} alt="" />
-                            <p className="text-base lg:text-[18px] font-overpass font-normal text-white text-shadow">
+                            <p className="text-shadow font-overpass text-base font-normal text-white lg:text-[18px]">
                               Wind
                             </p>
                           </div>
-                          <div className="h-[15px] w-[2px] bg-white box-shadow"></div>
+                          <div className="box-shadow h-[15px] w-[2px] bg-white"></div>
                           <div>
-                            <p className="text-base lg:text-[18px] flex items-center gap-x-1 font-overpass font-normal text-white text-shadow">
+                            <p className="text-shadow flex items-center gap-x-1 font-overpass text-base font-normal text-white lg:text-[18px]">
                               {Math.floor(
                                 weatherData.current
                                   ? weatherData.current.wind_kph
-                                  : "10"
+                                  : "10",
                               )}
                               <span>km/h</span>
                             </p>
@@ -287,17 +281,17 @@ const Home = ({ handleInput, data, loading, HandleSerach, className }) => {
                         <div className="flex items-center gap-x-4">
                           <div className="flex items-center gap-x-3">
                             <img src={hum} alt="" />
-                            <p className="text-base lg:text-[18px] font-overpass font-normal text-white text-shadow">
+                            <p className="text-shadow font-overpass text-base font-normal text-white lg:text-[18px]">
                               Hum
                             </p>
                           </div>
-                          <div className="h-[15px] w-[2px] bg-white box-shadow"></div>
+                          <div className="box-shadow h-[15px] w-[2px] bg-white"></div>
                           <div>
-                            <p className="text-base lg:text-[18px] flex items-center gap-x-1 font-overpass font-normal text-white text-shadow">
+                            <p className="text-shadow flex items-center gap-x-1 font-overpass text-base font-normal text-white lg:text-[18px]">
                               {Math.floor(
                                 weatherData.current
                                   ? weatherData.current.humidity
-                                  : "10"
+                                  : "10",
                               )}
                               <span>%</span>
                             </p>
@@ -314,45 +308,47 @@ const Home = ({ handleInput, data, loading, HandleSerach, className }) => {
                 <div className="container">
                   {data.location && (
                     <div>
-                      <div className="container flex flex-col items-center mt-10">
-                        <div className="relative py-4 md:py-7  shadow-inner px-8 overflow-hidden w-full bg-gradient-to-tl from-[#47BFDF] to-[#4a91ff] rounded-2xl">
+                      <div className="container mt-10 flex flex-col items-center">
+                        <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-tl from-[#47BFDF] to-[#4a91ff] px-8 py-4 shadow-inner md:py-7">
                           {/* ========== */}
 
                           {/* ==== Forecast details ===== */}
                           <div>
                             <div className="flex items-center justify-between py-5">
                               <div>
-                                <h4 className="text-lg md:text-2xl font-overpass font-black text-white text-shadow">
+                                <h4 className="text-shadow font-overpass text-lg font-black text-white md:text-2xl">
                                   Today
                                 </h4>
                               </div>
                               <div>
-                                <h4 className="text-lg md:text-2xl font-overpass font-normal flex items-center text-white text-shadow">
+                                <h4 className="text-shadow flex items-center font-overpass text-lg font-normal text-white md:text-2xl">
                                   {data && time.getMonth() + 1 == 1
                                     ? "January"
                                     : time.getMonth() + 1 == 2
-                                    ? "February"
-                                    : time.getMonth() + 1 == 3
-                                    ? "March"
-                                    : time.getMonth() + 1 == 4
-                                    ? "April"
-                                    : time.getMonth() + 1 == 5
-                                    ? "May"
-                                    : time.getMonth() + 1 == 6
-                                    ? "June"
-                                    : time.getMonth() + 1 == 7
-                                    ? "July"
-                                    : time.getMonth() + 1 == 8
-                                    ? "August"
-                                    : time.getMonth() + 1 == 9
-                                    ? "September"
-                                    : time.getMonth() + 1 == 10
-                                    ? "October"
-                                    : time.getMonth() + 1 == 11
-                                    ? "November"
-                                    : time.getMonth() + 1 == 12
-                                    ? "December"
-                                    : "January"}
+                                      ? "February"
+                                      : time.getMonth() + 1 == 3
+                                        ? "March"
+                                        : time.getMonth() + 1 == 4
+                                          ? "April"
+                                          : time.getMonth() + 1 == 5
+                                            ? "May"
+                                            : time.getMonth() + 1 == 6
+                                              ? "June"
+                                              : time.getMonth() + 1 == 7
+                                                ? "July"
+                                                : time.getMonth() + 1 == 8
+                                                  ? "August"
+                                                  : time.getMonth() + 1 == 9
+                                                    ? "September"
+                                                    : time.getMonth() + 1 == 10
+                                                      ? "October"
+                                                      : time.getMonth() + 1 ==
+                                                          11
+                                                        ? "November"
+                                                        : time.getMonth() + 1 ==
+                                                            12
+                                                          ? "December"
+                                                          : "January"}
                                   , {time.getDate() ? time.getDate() : "12"}
                                 </h4>
                               </div>
@@ -383,9 +379,9 @@ const Home = ({ handleInput, data, loading, HandleSerach, className }) => {
                                     <SwiperSlide>
                                       {" "}
                                       <div className="flex flex-col items-center gap-y-1">
-                                        <h5 className="leading-none text-base md:text-[18px] font-overpass font-normal text-white text-shadow">
+                                        <h5 className="text-shadow font-overpass text-base font-normal leading-none text-white md:text-[18px]">
                                           {Math.round(
-                                            item ? item.temp_c : "29°C"
+                                            item ? item.temp_c : "29°C",
                                           )}
                                           °C
                                         </h5>
@@ -395,31 +391,36 @@ const Home = ({ handleInput, data, loading, HandleSerach, className }) => {
                                               item.condition.text == "Cloudy"
                                                 ? cloudy
                                                 : item.condition.text ==
-                                                  "Patchy rain nearby"
-                                                ? patchyRain
-                                                : item.condition.text ==
-                                                  "Partly Cloudy"
-                                                ? partyCloudy
-                                                : item.condition.text ==
-                                                  "Overcast"
-                                                ? overCast
-                                                : item.condition.text == "Clear"
-                                                ? sunny
-                                                : item.condition.text ==
-                                                  "Moderate or heavy rain with thunder"
-                                                ? heavyRain
-                                                : item.condition.text == "Sunny"
-                                                ? sunny
-                                                : item.condition.text ==
-                                                  "Moderate rain"
-                                                ? lightRain
-                                                : item.condition.text ==
-                                                  "Patchy light drizzle"
-                                                ? lightRain
-                                                : item.condition.text ==
-                                                  "Patchy light rain"
-                                                ? lightRain
-                                                : cloudy
+                                                    "Patchy rain nearby"
+                                                  ? patchyRain
+                                                  : item.condition.text ==
+                                                      "Partly Cloudy"
+                                                    ? partyCloudy
+                                                    : item.condition.text ==
+                                                        "Overcast"
+                                                      ? overCast
+                                                      : item.condition.text ==
+                                                          "Clear"
+                                                        ? sunny
+                                                        : item.condition.text ==
+                                                            "Moderate or heavy rain with thunder"
+                                                          ? heavyRain
+                                                          : item.condition
+                                                                .text == "Sunny"
+                                                            ? sunny
+                                                            : item.condition
+                                                                  .text ==
+                                                                "Moderate rain"
+                                                              ? lightRain
+                                                              : item.condition
+                                                                    .text ==
+                                                                  "Patchy light drizzle"
+                                                                ? lightRain
+                                                                : item.condition
+                                                                      .text ==
+                                                                    "Patchy light rain"
+                                                                  ? lightRain
+                                                                  : cloudy
                                             }
                                             alt={cloudy}
                                             className="w-[35px]"
@@ -431,7 +432,7 @@ const Home = ({ handleInput, data, loading, HandleSerach, className }) => {
                                             className="w-[35px]"
                                           />
                                         )}
-                                        <h4 className="text-base md:text-[18px] font-overpass font-normal text-white text-shadow">
+                                        <h4 className="text-shadow font-overpass text-base font-normal text-white md:text-[18px]">
                                           {item ? item.time.slice(10) : "2.00"}
                                         </h4>
                                       </div>
@@ -447,53 +448,53 @@ const Home = ({ handleInput, data, loading, HandleSerach, className }) => {
                 </div>
               </div>
               {/* ======= Next forecast ======== */}
-              <div className="mt-10 border-4 shadow-xl border-[#ffffff46] py-4 px-6 rounded-2xl">
+              <div className="mt-10 rounded-2xl border-4 border-[#ffffff46] px-6 py-4 shadow-xl">
                 <div className="container">
                   <div>
                     <div className="flex items-center justify-between">
-                      <h4 className="text-xl md:text-3xl font-overpass font-black text-white">
+                      <h4 className="font-overpass text-xl font-black text-white md:text-3xl">
                         Next Forecast
                       </h4>
-                      <SlCalender className="text-white text-xl md:text-3xl" />
+                      <SlCalender className="text-xl text-white md:text-3xl" />
                     </div>
-                    <div className="pt-5 flex flex-col gap-y-3">
+                    <div className="flex flex-col gap-y-3 pt-5">
                       {data.forecast ? (
                         data.forecast.forecastday
                           .slice(1, data.forecast.lenght)
                           .map((item, index) => (
                             <div
                               key={index}
-                              className="text-white font-bold text-lg md:text-2xl font-overpass flex items-center justify-between"
+                              className="flex items-center justify-between font-overpass text-lg font-bold text-white md:text-2xl"
                             >
-                              <h4 className="flex items-center gap-x-2 md:w-[190px] overflow-hidden text-ellipsis whitespace-nowrap">
+                              <h4 className="flex items-center gap-x-2 overflow-hidden text-ellipsis whitespace-nowrap md:w-[190px]">
                                 {data.location && date == 1
                                   ? "January"
                                   : date == 2
-                                  ? "February"
-                                  : date == 3
-                                  ? "March"
-                                  : date == 4
-                                  ? "April"
-                                  : date == 5
-                                  ? "May"
-                                  : date == 6
-                                  ? "June"
-                                  : date == 7
-                                  ? "July"
-                                  : date == 8
-                                  ? "August"
-                                  : date == 9
-                                  ? "September"
-                                  : date == 10
-                                  ? "October"
-                                  : date == 11
-                                  ? "November"
-                                  : date == 12
-                                  ? "December"
-                                  : "January"}
+                                    ? "February"
+                                    : date == 3
+                                      ? "March"
+                                      : date == 4
+                                        ? "April"
+                                        : date == 5
+                                          ? "May"
+                                          : date == 6
+                                            ? "June"
+                                            : date == 7
+                                              ? "July"
+                                              : date == 8
+                                                ? "August"
+                                                : date == 9
+                                                  ? "September"
+                                                  : date == 10
+                                                    ? "October"
+                                                    : date == 11
+                                                      ? "November"
+                                                      : date == 12
+                                                        ? "December"
+                                                        : "January"}
                                 ,<p>{item ? item.date.slice(8, 10) : "12"}</p>
                               </h4>
-                              <div className="hidden md:flex items-center gap-x-1">
+                              <div className="hidden items-center gap-x-1 md:flex">
                                 <img src={hum} alt="" />
                                 <span>{item && item.day.avghumidity}%</span>
                               </div>
@@ -503,30 +504,33 @@ const Home = ({ handleInput, data, loading, HandleSerach, className }) => {
                                     item.day.condition.text == "Cloudy"
                                       ? cloudy
                                       : item.day.condition.text ==
-                                        "Patchy rain nearby"
-                                      ? patchyRain
-                                      : item.day.condition.text ==
-                                        "Partly Cloudy"
-                                      ? partyCloudy
-                                      : item.day.condition.text == "Overcast"
-                                      ? overCast
-                                      : item.day.condition.text == "Clear"
-                                      ? sunny
-                                      : item.day.condition.text ==
-                                        "Moderate or heavy rain with thunder"
-                                      ? heavyRain
-                                      : item.day.condition.text == "Sunny"
-                                      ? sunny
-                                      : item.day.condition.text ==
-                                        "Moderate rain"
-                                      ? lightRain
-                                      : item.day.condition.text ==
-                                        "Patchy light drizzle"
-                                      ? lightRain
-                                      : item.day.condition.text ==
-                                        "Patchy light rain"
-                                      ? lightRain
-                                      : cloudy
+                                          "Patchy rain nearby"
+                                        ? patchyRain
+                                        : item.day.condition.text ==
+                                            "Partly Cloudy"
+                                          ? partyCloudy
+                                          : item.day.condition.text ==
+                                              "Overcast"
+                                            ? overCast
+                                            : item.day.condition.text == "Clear"
+                                              ? sunny
+                                              : item.day.condition.text ==
+                                                  "Moderate or heavy rain with thunder"
+                                                ? heavyRain
+                                                : item.day.condition.text ==
+                                                    "Sunny"
+                                                  ? sunny
+                                                  : item.day.condition.text ==
+                                                      "Moderate rain"
+                                                    ? lightRain
+                                                    : item.day.condition.text ==
+                                                        "Patchy light drizzle"
+                                                      ? lightRain
+                                                      : item.day.condition
+                                                            .text ==
+                                                          "Patchy light rain"
+                                                        ? lightRain
+                                                        : cloudy
                                   }
                                   alt=""
                                   className="w-9 md:w-14"
@@ -534,7 +538,7 @@ const Home = ({ handleInput, data, loading, HandleSerach, className }) => {
                               ) : (
                                 <img src={cloudy} alt="" />
                               )}
-                              <div className="hidden md:flex items-center gap-x-1">
+                              <div className="hidden items-center gap-x-1 md:flex">
                                 <img src={wind} alt="" />
                                 <span>
                                   {Math.round(item && item.day.maxwind_kph)}km/h
@@ -547,106 +551,106 @@ const Home = ({ handleInput, data, loading, HandleSerach, className }) => {
                           ))
                       ) : (
                         <div className="flex flex-col gap-y-3 text-lg md:text-2xl">
-                          <div className="text-white font-bold font-overpass flex items-center justify-between">
-                            <h4 className="flex items-center gap-x-2 w-[120px] md:w-[190px] overflow-hidden text-ellipsis whitespace-nowrap">
+                          <div className="flex items-center justify-between font-overpass font-bold text-white">
+                            <h4 className="flex w-[120px] items-center gap-x-2 overflow-hidden text-ellipsis whitespace-nowrap md:w-[190px]">
                               January, 21
                             </h4>
-                            <div className="hidden md:flex items-center gap-x-1">
+                            <div className="hidden items-center gap-x-1 md:flex">
                               <img src={hum} alt="" />
                               <span>75%</span>
                             </div>
                             <img src={cloudy} alt="" className="w-9 md:w-14" />
-                            <div className="hidden md:flex items-center gap-x-1">
+                            <div className="hidden items-center gap-x-1 md:flex">
                               <img src={wind} alt="" />
                               <span>15km/h</span>
                             </div>
                             <h5 className="font-normal">21°</h5>
                           </div>
-                          <div className="text-white font-bold  font-overpass flex items-center justify-between">
-                            <h4 className="flex items-center gap-x-2 w-[120px] md:w-[190px] overflow-hidden text-ellipsis whitespace-nowrap">
+                          <div className="flex items-center justify-between font-overpass font-bold text-white">
+                            <h4 className="flex w-[120px] items-center gap-x-2 overflow-hidden text-ellipsis whitespace-nowrap md:w-[190px]">
                               February, 12
                             </h4>
-                            <div className="hidden md:flex items-center gap-x-1">
+                            <div className="hidden items-center gap-x-1 md:flex">
                               <img src={hum} alt="" />
                               <span>60%</span>
                             </div>
                             <img src={cloudy} alt="" className="w-9 md:w-14" />
-                            <div className="hidden md:flex items-center gap-x-1">
+                            <div className="hidden items-center gap-x-1 md:flex">
                               <img src={wind} alt="" />
                               <span>12km/h</span>
                             </div>
                             <h5 className="font-normal">21°</h5>
                           </div>
-                          <div className="text-white font-bold  font-overpass flex items-center justify-between ">
-                            <h4 className="flex items-center gap-x-2 w-[120px] md:w-[190px] overflow-hidden text-ellipsis whitespace-nowrap">
+                          <div className="flex items-center justify-between font-overpass font-bold text-white">
+                            <h4 className="flex w-[120px] items-center gap-x-2 overflow-hidden text-ellipsis whitespace-nowrap md:w-[190px]">
                               March, 15
                             </h4>
-                            <div className="hidden md:flex items-center gap-x-1">
+                            <div className="hidden items-center gap-x-1 md:flex">
                               <img src={hum} alt="" />
                               <span>95%</span>
                             </div>
                             <img src={cloudy} alt="" className="w-9 md:w-14" />
-                            <div className="hidden md:flex items-center gap-x-1">
+                            <div className="hidden items-center gap-x-1 md:flex">
                               <img src={wind} alt="" />
                               <span>35km/h</span>
                             </div>
                             <h5 className="font-normal">21°</h5>
                           </div>
-                          <div className="text-white font-bold  font-overpass flex items-center justify-between">
-                            <h4 className="flex items-center gap-x-2 w-[120px] md:w-[190px] overflow-hidden text-ellipsis whitespace-nowrap">
+                          <div className="flex items-center justify-between font-overpass font-bold text-white">
+                            <h4 className="flex w-[120px] items-center gap-x-2 overflow-hidden text-ellipsis whitespace-nowrap md:w-[190px]">
                               April, 26
                             </h4>
-                            <div className="hidden md:flex items-center gap-x-1">
+                            <div className="hidden items-center gap-x-1 md:flex">
                               <img src={hum} alt="" />
                               <span>55%</span>
                             </div>
                             <img src={cloudy} alt="" className="w-9 md:w-14" />
-                            <div className="hidden md:flex items-center gap-x-1">
+                            <div className="hidden items-center gap-x-1 md:flex">
                               <img src={wind} alt="" />
                               <span>08km/h</span>
                             </div>
                             <h5 className="font-normal">21°</h5>
                           </div>
-                          <div className="text-white font-bold  font-overpass flex items-center justify-between">
-                            <h4 className="flex items-center gap-x-2 w-[120px] md:w-[190px] overflow-hidden text-ellipsis whitespace-nowrap">
+                          <div className="flex items-center justify-between font-overpass font-bold text-white">
+                            <h4 className="flex w-[120px] items-center gap-x-2 overflow-hidden text-ellipsis whitespace-nowrap md:w-[190px]">
                               May, 08
                             </h4>
-                            <div className="hidden md:flex items-center gap-x-1">
+                            <div className="hidden items-center gap-x-1 md:flex">
                               <img src={hum} alt="" />
                               <span>25%</span>
                             </div>
                             <img src={cloudy} alt="" className="w-9 md:w-14" />
-                            <div className="hidden md:flex items-center gap-x-1">
+                            <div className="hidden items-center gap-x-1 md:flex">
                               <img src={wind} alt="" />
                               <span>30km/h</span>
                             </div>
                             <h5 className="font-normal">21°</h5>
                           </div>
-                          <div className="text-white font-bold  font-overpass flex items-center justify-between">
-                            <h4 className="flex items-center gap-x-2 w-[120px] md:w-[190px] overflow-hidden text-ellipsis whitespace-nowrap">
+                          <div className="flex items-center justify-between font-overpass font-bold text-white">
+                            <h4 className="flex w-[120px] items-center gap-x-2 overflow-hidden text-ellipsis whitespace-nowrap md:w-[190px]">
                               June, 25
                             </h4>
-                            <div className="hidden md:flex items-center gap-x-1">
+                            <div className="hidden items-center gap-x-1 md:flex">
                               <img src={hum} alt="" />
                               <span>60%</span>
                             </div>
                             <img src={cloudy} alt="" className="w-9 md:w-14" />
-                            <div className="hidden md:flex items-center gap-x-1">
+                            <div className="hidden items-center gap-x-1 md:flex">
                               <img src={wind} alt="" />
                               <span>10km/h</span>
                             </div>
                             <h5 className="font-normal">21°</h5>
                           </div>
-                          <div className="text-white font-bold font-overpass flex items-center justify-between">
-                            <h4 className="flex items-center gap-x-2 w-[120px] md:w-[190px] overflow-hidden text-ellipsis whitespace-nowrap">
+                          <div className="flex items-center justify-between font-overpass font-bold text-white">
+                            <h4 className="flex w-[120px] items-center gap-x-2 overflow-hidden text-ellipsis whitespace-nowrap md:w-[190px]">
                               July, 29
                             </h4>
-                            <div className="hidden md:flex items-center gap-x-1">
+                            <div className="hidden items-center gap-x-1 md:flex">
                               <img src={hum} alt="" />
                               <span>40%</span>
                             </div>
                             <img src={cloudy} alt="" className="w-9 md:w-14" />
-                            <div className="hidden md:flex items-center gap-x-1">
+                            <div className="hidden items-center gap-x-1 md:flex">
                               <img src={wind} alt="" />
                               <span>65km/h</span>
                             </div>
