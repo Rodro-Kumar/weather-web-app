@@ -21,7 +21,6 @@ import { SlCalender } from "react-icons/sl";
 import "swiper/css";
 
 const Home = ({ handleInput, data, loading, HandleSerach, className }) => {
-  console.log(data.forecast);
   const [isopen, setisopen] = useState(false);
   const [weatherData, setweatherData] = useState({});
   const [date, setdate] = useState();
